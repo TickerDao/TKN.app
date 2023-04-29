@@ -15,9 +15,13 @@
 		2605445B29DF3FB000AE2662 /* TKNUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2605445A29DF3FB000AE2662 /* TKNUITests.swift */; };
 		2605445D29DF3FB000AE2662 /* TKNUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2605445C29DF3FB000AE2662 /* TKNUITestsLaunchTests.swift */; };
 		2605446A29DF40D400AE2662 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2605446929DF40D400AE2662 /* WebView.swift */; };
+		268EE57629E7DEEF00081807 /* edit.svg in Resources */ = {isa = PBXBuildFile; fileRef = 268EE57529E7DEEF00081807 /* edit.svg */; };
+		26A497B229E132A3007BDD66 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A497B129E132A3007BDD66 /* SearchView.swift */; };
+		26D64C6D29F330AB00526CDE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D64C6C29F330AB00526CDE /* Constants.swift */; };
 		26EF69B129DF6D23006848B2 /* search.svg in Resources */ = {isa = PBXBuildFile; fileRef = 26EF69B029DF6D23006848B2 /* search.svg */; };
 		26EF69B329DF6D2E006848B2 /* star.svg in Resources */ = {isa = PBXBuildFile; fileRef = 26EF69B229DF6D2E006848B2 /* star.svg */; };
 		26EF69B529DF6D35006848B2 /* list.svg in Resources */ = {isa = PBXBuildFile; fileRef = 26EF69B429DF6D35006848B2 /* list.svg */; };
+		26EF69B829DF7093006848B2 /* SVGKitSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 26EF69B729DF7093006848B2 /* SVGKitSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +54,9 @@
 		2605445A29DF3FB000AE2662 /* TKNUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TKNUITests.swift; sourceTree = "<group>"; };
 		2605445C29DF3FB000AE2662 /* TKNUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TKNUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		2605446929DF40D400AE2662 /* WebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		268EE57529E7DEEF00081807 /* edit.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = edit.svg; sourceTree = "<group>"; };
+		26A497B129E132A3007BDD66 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		26D64C6C29F330AB00526CDE /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		26EF69AE29DF6361006848B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		26EF69B029DF6D23006848B2 /* search.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = search.svg; sourceTree = "<group>"; };
 		26EF69B229DF6D2E006848B2 /* star.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = star.svg; sourceTree = "<group>"; };
@@ -61,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26EF69B829DF7093006848B2 /* SVGKitSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,10 +113,12 @@
 		2605443D29DF3FAD00AE2662 /* TKN */ = {
 			isa = PBXGroup;
 			children = (
-				26EF69AE29DF6361006848B2 /* Info.plist */,
+				26D64C6C29F330AB00526CDE /* Constants.swift */,
 				2605443E29DF3FAD00AE2662 /* TKNApp.swift */,
-				2605446929DF40D400AE2662 /* WebView.swift */,
+				26EF69AE29DF6361006848B2 /* Info.plist */,
 				2605444029DF3FAD00AE2662 /* ContentView.swift */,
+				2605446929DF40D400AE2662 /* WebView.swift */,
+				26A497B129E132A3007BDD66 /* SearchView.swift */,
 				2605444229DF3FB000AE2662 /* Assets.xcassets */,
 				2605444429DF3FB000AE2662 /* TKN.entitlements */,
 				2605444529DF3FB000AE2662 /* Preview Content */,
@@ -144,6 +154,7 @@
 		26EF69AF29DF6D07006848B2 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				268EE57529E7DEEF00081807 /* edit.svg */,
 				26EF69B029DF6D23006848B2 /* search.svg */,
 				26EF69B429DF6D35006848B2 /* list.svg */,
 				26EF69B229DF6D2E006848B2 /* star.svg */,
@@ -167,6 +178,9 @@
 			dependencies = (
 			);
 			name = TKN;
+			packageProductDependencies = (
+				26EF69B729DF7093006848B2 /* SVGKitSwift */,
+			);
 			productName = TKN;
 			productReference = 2605443B29DF3FAD00AE2662 /* TKN.app */;
 			productType = "com.apple.product-type.application";
@@ -240,6 +254,9 @@
 				Base,
 			);
 			mainGroup = 2605443229DF3FAD00AE2662;
+			packageReferences = (
+				26EF69B629DF7093006848B2 /* XCRemoteSwiftPackageReference "SVGKit" */,
+			);
 			productRefGroup = 2605443C29DF3FAD00AE2662 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -260,6 +277,7 @@
 				26EF69B129DF6D23006848B2 /* search.svg in Resources */,
 				26EF69B529DF6D35006848B2 /* list.svg in Resources */,
 				2605444729DF3FB000AE2662 /* Preview Assets.xcassets in Resources */,
+				268EE57629E7DEEF00081807 /* edit.svg in Resources */,
 				2605444329DF3FB000AE2662 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -285,6 +303,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26D64C6D29F330AB00526CDE /* Constants.swift in Sources */,
+				26A497B229E132A3007BDD66 /* SearchView.swift in Sources */,
 				2605446A29DF40D400AE2662 /* WebView.swift in Sources */,
 				2605444129DF3FAD00AE2662 /* ContentView.swift in Sources */,
 				2605443F29DF3FAD00AE2662 /* TKNApp.swift in Sources */,
@@ -447,7 +467,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TKN/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "TKN - Token Database";
+				INFOPLIST_KEY_CFBundleDisplayName = TKN;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
@@ -488,7 +508,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TKN/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "TKN - Token Database";
+				INFOPLIST_KEY_CFBundleDisplayName = TKN;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
@@ -645,6 +665,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		26EF69B629DF7093006848B2 /* XCRemoteSwiftPackageReference "SVGKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SVGKit/SVGKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		26EF69B729DF7093006848B2 /* SVGKitSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 26EF69B629DF7093006848B2 /* XCRemoteSwiftPackageReference "SVGKit" */;
+			productName = SVGKitSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2605443329DF3FAD00AE2662 /* Project object */;
 }
