@@ -33,7 +33,6 @@
 		26F2F00329FE11E100A88A69 /* popup.css in Resources */ = {isa = PBXBuildFile; fileRef = 26F2F00229FE11E100A88A69 /* popup.css */; };
 		26F2F00529FE11E100A88A69 /* popup.js in Resources */ = {isa = PBXBuildFile; fileRef = 26F2F00429FE11E100A88A69 /* popup.js */; };
 		26F2F00929FE11E100A88A69 /* DWeb.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 26F2EFF129FE11E100A88A69 /* DWeb.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		26F2F00F29FE133200A88A69 /* DWebResolver.js in Resources */ = {isa = PBXBuildFile; fileRef = 26F2F00E29FE133200A88A69 /* DWebResolver.js */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,7 +105,6 @@
 		26F2F00229FE11E100A88A69 /* popup.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = popup.css; sourceTree = "<group>"; };
 		26F2F00429FE11E100A88A69 /* popup.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = popup.js; sourceTree = "<group>"; };
 		26F2F00629FE11E100A88A69 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		26F2F00E29FE133200A88A69 /* DWebResolver.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = DWebResolver.js; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -222,7 +220,6 @@
 			isa = PBXGroup;
 			children = (
 				26F2EFF329FE11E100A88A69 /* SafariWebExtensionHandler.swift */,
-				26F2F00E29FE133200A88A69 /* DWebResolver.js */,
 				26F2F00629FE11E100A88A69 /* Info.plist */,
 				26F2EFF529FE11E100A88A69 /* Resources */,
 			);
@@ -407,7 +404,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				26F2EFFD29FE11E100A88A69 /* background.js in Resources */,
-				26F2F00F29FE133200A88A69 /* DWebResolver.js in Resources */,
 				26F2F00329FE11E100A88A69 /* popup.css in Resources */,
 				26F2F00129FE11E100A88A69 /* popup.html in Resources */,
 				26F2EFF929FE11E100A88A69 /* images in Resources */,
