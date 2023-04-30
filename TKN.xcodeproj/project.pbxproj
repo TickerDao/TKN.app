@@ -22,6 +22,18 @@
 		26EF69B329DF6D2E006848B2 /* star.svg in Resources */ = {isa = PBXBuildFile; fileRef = 26EF69B229DF6D2E006848B2 /* star.svg */; };
 		26EF69B529DF6D35006848B2 /* list.svg in Resources */ = {isa = PBXBuildFile; fileRef = 26EF69B429DF6D35006848B2 /* list.svg */; };
 		26EF69B829DF7093006848B2 /* SVGKitSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 26EF69B729DF7093006848B2 /* SVGKitSwift */; };
+		26F2EFEA29FD2EDA00A88A69 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 26F2EFE929FD2EDA00A88A69 /* README.md */; };
+		26F2EFF429FE11E100A88A69 /* SafariWebExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F2EFF329FE11E100A88A69 /* SafariWebExtensionHandler.swift */; };
+		26F2EFF729FE11E100A88A69 /* _locales in Resources */ = {isa = PBXBuildFile; fileRef = 26F2EFF629FE11E100A88A69 /* _locales */; };
+		26F2EFF929FE11E100A88A69 /* images in Resources */ = {isa = PBXBuildFile; fileRef = 26F2EFF829FE11E100A88A69 /* images */; };
+		26F2EFFB29FE11E100A88A69 /* manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = 26F2EFFA29FE11E100A88A69 /* manifest.json */; };
+		26F2EFFD29FE11E100A88A69 /* background.js in Resources */ = {isa = PBXBuildFile; fileRef = 26F2EFFC29FE11E100A88A69 /* background.js */; };
+		26F2EFFF29FE11E100A88A69 /* content.js in Resources */ = {isa = PBXBuildFile; fileRef = 26F2EFFE29FE11E100A88A69 /* content.js */; };
+		26F2F00129FE11E100A88A69 /* popup.html in Resources */ = {isa = PBXBuildFile; fileRef = 26F2F00029FE11E100A88A69 /* popup.html */; };
+		26F2F00329FE11E100A88A69 /* popup.css in Resources */ = {isa = PBXBuildFile; fileRef = 26F2F00229FE11E100A88A69 /* popup.css */; };
+		26F2F00529FE11E100A88A69 /* popup.js in Resources */ = {isa = PBXBuildFile; fileRef = 26F2F00429FE11E100A88A69 /* popup.js */; };
+		26F2F00929FE11E100A88A69 /* DWeb.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 26F2EFF129FE11E100A88A69 /* DWeb.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		26F2F00F29FE133200A88A69 /* DWebResolver.js in Resources */ = {isa = PBXBuildFile; fileRef = 26F2F00E29FE133200A88A69 /* DWebResolver.js */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,7 +51,28 @@
 			remoteGlobalIDString = 2605443A29DF3FAD00AE2662;
 			remoteInfo = TKN;
 		};
+		26F2F00729FE11E100A88A69 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2605443329DF3FAD00AE2662 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 26F2EFF029FE11E100A88A69;
+			remoteInfo = DWeb;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		26F2F00D29FE11E100A88A69 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				26F2F00929FE11E100A88A69 /* DWeb.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		2605443B29DF3FAD00AE2662 /* TKN.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TKN.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -61,6 +94,19 @@
 		26EF69B029DF6D23006848B2 /* search.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = search.svg; sourceTree = "<group>"; };
 		26EF69B229DF6D2E006848B2 /* star.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = star.svg; sourceTree = "<group>"; };
 		26EF69B429DF6D35006848B2 /* list.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = list.svg; sourceTree = "<group>"; };
+		26F2EFE929FD2EDA00A88A69 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		26F2EFF129FE11E100A88A69 /* DWeb.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = DWeb.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		26F2EFF329FE11E100A88A69 /* SafariWebExtensionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariWebExtensionHandler.swift; sourceTree = "<group>"; };
+		26F2EFF629FE11E100A88A69 /* _locales */ = {isa = PBXFileReference; lastKnownFileType = folder; path = _locales; sourceTree = "<group>"; };
+		26F2EFF829FE11E100A88A69 /* images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = images; sourceTree = "<group>"; };
+		26F2EFFA29FE11E100A88A69 /* manifest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = manifest.json; sourceTree = "<group>"; };
+		26F2EFFC29FE11E100A88A69 /* background.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = background.js; sourceTree = "<group>"; };
+		26F2EFFE29FE11E100A88A69 /* content.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = content.js; sourceTree = "<group>"; };
+		26F2F00029FE11E100A88A69 /* popup.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = popup.html; sourceTree = "<group>"; };
+		26F2F00229FE11E100A88A69 /* popup.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = popup.css; sourceTree = "<group>"; };
+		26F2F00429FE11E100A88A69 /* popup.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = popup.js; sourceTree = "<group>"; };
+		26F2F00629FE11E100A88A69 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		26F2F00E29FE133200A88A69 /* DWebResolver.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = DWebResolver.js; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,16 +132,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		26F2EFEE29FE11E100A88A69 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		2605443229DF3FAD00AE2662 = {
 			isa = PBXGroup;
 			children = (
+				26F2EFE929FD2EDA00A88A69 /* README.md */,
 				2605443D29DF3FAD00AE2662 /* TKN */,
 				26EF69AF29DF6D07006848B2 /* Assets */,
 				2605444F29DF3FB000AE2662 /* TKNTests */,
 				2605445929DF3FB000AE2662 /* TKNUITests */,
+				26F2EFF229FE11E100A88A69 /* DWeb */,
 				2605443C29DF3FAD00AE2662 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -106,6 +161,7 @@
 				2605443B29DF3FAD00AE2662 /* TKN.app */,
 				2605444C29DF3FB000AE2662 /* TKNTests.xctest */,
 				2605445629DF3FB000AE2662 /* TKNUITests.xctest */,
+				26F2EFF129FE11E100A88A69 /* DWeb.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -162,6 +218,32 @@
 			path = Assets;
 			sourceTree = "<group>";
 		};
+		26F2EFF229FE11E100A88A69 /* DWeb */ = {
+			isa = PBXGroup;
+			children = (
+				26F2EFF329FE11E100A88A69 /* SafariWebExtensionHandler.swift */,
+				26F2F00E29FE133200A88A69 /* DWebResolver.js */,
+				26F2F00629FE11E100A88A69 /* Info.plist */,
+				26F2EFF529FE11E100A88A69 /* Resources */,
+			);
+			path = DWeb;
+			sourceTree = "<group>";
+		};
+		26F2EFF529FE11E100A88A69 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				26F2EFF629FE11E100A88A69 /* _locales */,
+				26F2EFF829FE11E100A88A69 /* images */,
+				26F2EFFA29FE11E100A88A69 /* manifest.json */,
+				26F2EFFC29FE11E100A88A69 /* background.js */,
+				26F2EFFE29FE11E100A88A69 /* content.js */,
+				26F2F00029FE11E100A88A69 /* popup.html */,
+				26F2F00229FE11E100A88A69 /* popup.css */,
+				26F2F00429FE11E100A88A69 /* popup.js */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -172,10 +254,12 @@
 				2605443729DF3FAD00AE2662 /* Sources */,
 				2605443829DF3FAD00AE2662 /* Frameworks */,
 				2605443929DF3FAD00AE2662 /* Resources */,
+				26F2F00D29FE11E100A88A69 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				26F2F00829FE11E100A88A69 /* PBXTargetDependency */,
 			);
 			name = TKN;
 			packageProductDependencies = (
@@ -221,6 +305,23 @@
 			productReference = 2605445629DF3FB000AE2662 /* TKNUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		26F2EFF029FE11E100A88A69 /* DWeb */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 26F2F00A29FE11E100A88A69 /* Build configuration list for PBXNativeTarget "DWeb" */;
+			buildPhases = (
+				26F2EFED29FE11E100A88A69 /* Sources */,
+				26F2EFEE29FE11E100A88A69 /* Frameworks */,
+				26F2EFEF29FE11E100A88A69 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DWeb;
+			productName = DWeb;
+			productReference = 26F2EFF129FE11E100A88A69 /* DWeb.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -243,6 +344,9 @@
 						CreatedOnToolsVersion = 14.3;
 						TestTargetID = 2605443A29DF3FAD00AE2662;
 					};
+					26F2EFF029FE11E100A88A69 = {
+						CreatedOnToolsVersion = 14.3;
+					};
 				};
 			};
 			buildConfigurationList = 2605443629DF3FAD00AE2662 /* Build configuration list for PBXProject "TKN" */;
@@ -264,6 +368,7 @@
 				2605443A29DF3FAD00AE2662 /* TKN */,
 				2605444B29DF3FB000AE2662 /* TKNTests */,
 				2605445529DF3FB000AE2662 /* TKNUITests */,
+				26F2EFF029FE11E100A88A69 /* DWeb */,
 			);
 		};
 /* End PBXProject section */
@@ -276,6 +381,7 @@
 				26EF69B329DF6D2E006848B2 /* star.svg in Resources */,
 				26EF69B129DF6D23006848B2 /* search.svg in Resources */,
 				26EF69B529DF6D35006848B2 /* list.svg in Resources */,
+				26F2EFEA29FD2EDA00A88A69 /* README.md in Resources */,
 				2605444729DF3FB000AE2662 /* Preview Assets.xcassets in Resources */,
 				268EE57629E7DEEF00081807 /* edit.svg in Resources */,
 				2605444329DF3FB000AE2662 /* Assets.xcassets in Resources */,
@@ -293,6 +399,22 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		26F2EFEF29FE11E100A88A69 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				26F2EFFD29FE11E100A88A69 /* background.js in Resources */,
+				26F2F00F29FE133200A88A69 /* DWebResolver.js in Resources */,
+				26F2F00329FE11E100A88A69 /* popup.css in Resources */,
+				26F2F00129FE11E100A88A69 /* popup.html in Resources */,
+				26F2EFF929FE11E100A88A69 /* images in Resources */,
+				26F2EFFB29FE11E100A88A69 /* manifest.json in Resources */,
+				26F2EFF729FE11E100A88A69 /* _locales in Resources */,
+				26F2EFFF29FE11E100A88A69 /* content.js in Resources */,
+				26F2F00529FE11E100A88A69 /* popup.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -328,6 +450,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		26F2EFED29FE11E100A88A69 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				26F2EFF429FE11E100A88A69 /* SafariWebExtensionHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -340,6 +470,11 @@
 			isa = PBXTargetDependency;
 			target = 2605443A29DF3FAD00AE2662 /* TKN */;
 			targetProxy = 2605445729DF3FB000AE2662 /* PBXContainerItemProxy */;
+		};
+		26F2F00829FE11E100A88A69 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 26F2EFF029FE11E100A88A69 /* DWeb */;
+			targetProxy = 26F2F00729FE11E100A88A69 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -456,6 +591,7 @@
 		2605446129DF3FB000AE2662 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = TKN/TKN.entitlements;
@@ -497,6 +633,7 @@
 		2605446229DF3FB000AE2662 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = TKN/TKN.entitlements;
@@ -625,6 +762,69 @@
 			};
 			name = Release;
 		};
+		26F2F00B29FE11E100A88A69 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8RSBH459XV;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DWeb/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = DWeb;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2023 Superadditive. All rights reserved.";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = xyz.tkn.TKN.DWeb;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		26F2F00C29FE11E100A88A69 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8RSBH459XV;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DWeb/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = DWeb;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2023 Superadditive. All rights reserved.";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = xyz.tkn.TKN.DWeb;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -660,6 +860,15 @@
 			buildConfigurations = (
 				2605446729DF3FB000AE2662 /* Debug */,
 				2605446829DF3FB000AE2662 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		26F2F00A29FE11E100A88A69 /* Build configuration list for PBXNativeTarget "DWeb" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				26F2F00B29FE11E100A88A69 /* Debug */,
+				26F2F00C29FE11E100A88A69 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
