@@ -21,21 +21,23 @@ struct ContentView: View {
         TabView(selection: $selectedTab.onUpdate{ model.tabTapped(item: selectedTab) }) {
             WebView(url: URL(string: Constants.tab0)!, tag: 0)
                 .navigationBarHidden(true)
-                .edgesIgnoringSafeArea(.horizontal)
+                .edgesIgnoringSafeArea(.all)
                 .tabItem {
                     TabBarItem(title: "Tokens", image: svgImage(named: "list"))
                 }
                 .tag(0)
+                .background(Color(Constants.backgroundColor))
             WebView(url: URL(string: Constants.tab1)!, tag: 1)
                 .navigationBarHidden(true)
-                .edgesIgnoringSafeArea(.horizontal)
+                .edgesIgnoringSafeArea(.all)
                 .tabItem {
                     TabBarItem(title: "Edit", image: svgImage(named: "edit"))
                 }
                 .tag(1)
+                .background(Color(Constants.backgroundColor))
             SearchView()
                 .navigationBarHidden(true)
-                .edgesIgnoringSafeArea(.horizontal)
+                .edgesIgnoringSafeArea(.bottom)
                 .tabItem {
                     TabBarItem(title: "Search", image: svgImage(named: "search"))
                 }
@@ -47,6 +49,7 @@ struct ContentView: View {
                     TabBarItem(title: "Portfolio", image: svgImage(named: "star"))
                 }
                 .tag(3)
+                .background(Color(Constants.backgroundColor))
         }
     }
     

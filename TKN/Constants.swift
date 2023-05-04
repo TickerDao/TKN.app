@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct Constants {
     static let hostUrl: String = "https://tkn.xyz"
@@ -14,6 +15,8 @@ struct Constants {
     static let tab1: String = Constants.hostUrl + "/edit?frame=ios"
     static let tab2: String = Constants.hostUrl + "/search?frame=ios"
     static let tab3: String = Constants.hostUrl + "/portfolio?frame=ios"
+    
+    static let backgroundColor: UIColor = UIColor(red: 0.95, green: 0.96, blue: 0.96, alpha: 1.00)
  }
 
 func makeSearchUrl(query: String) -> String {

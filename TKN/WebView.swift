@@ -21,7 +21,8 @@ struct WebView: UIViewRepresentable {
         webView.scrollView.refreshControl?.addTarget(context.coordinator, action: #selector(Coordinator.refresh), for: .valueChanged)
         webView.load(URLRequest(url: url))
         context.coordinator.webView = webView
-
+        
+        webView.backgroundColor = Constants.backgroundColor
 
         let swipeBackRecognizer = UIScreenEdgePanGestureRecognizer(target: context.coordinator, action: #selector(Coordinator.goBack))
         swipeBackRecognizer.edges = .left
