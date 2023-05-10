@@ -1,246 +1,254 @@
-import SwiftUI
-import WebKit
+//
+//  SearchView.swift
+//  TKN
+//
+//  Created by Oak on 5/10/23.
+//  Copyright © 2023 Superadditive. All rights reserved.
+//
+
+import Foundation
 import UIKit
 
-struct SearchView: View {
-    @State private var textFieldText = ""
-    @State private var webViewURL: URL?
-    @State private var isFirstResponder = true
-    @State private var searchHistory: [String] = []
+class SearchView: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
+    
+    let searchTextField = UITextField()
+    let tableView = UITableView()
+    var searchHistory: [String] = [] {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
+    let webView = UIWebView(url: URL(string: Constants.tab2)!, tag: 2) // Default URL
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
-    @State private var reloadWebView = false
+        NotificationCenter.default.addObserver(self, selector: #selector(handleWebViewReload(notification:)), name: NSNotification.Name("com.user.webView.reload"), object: nil)
+        
+        loadSearchHistory()
+        self.view.backgroundColor = UIColor(red: 242/255, green: 242/255, blue: 246/255, alpha: 1.0)
+        setupUI()
+        setupWebView()
+        
+        searchTextField.autocorrectionType = .no
+    }
+    
+    func setupWebView() {
+        // Add webView to your view hierarchy and set its constraints
+        view.addSubview(webView)
+        // Add constraints for webView
+        webView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            webView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            webView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            webView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            webView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        ])
+        webView.isHidden = true // Initially, hide the webView
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if (webView.isHidden) {
+            searchTextField.becomeFirstResponder()
+        }
+    }
+    
+    @objc func handleWebViewReload(notification: NSNotification) {
+        if let userInfo = notification.userInfo, let selectedTab = userInfo["selectedTab"] as? Int {
+            if selectedTab == 2 {
+                webView.isHidden = true // Show the webView
+                tableView.isHidden = false // Hide the tableView
+                searchTextField.becomeFirstResponder()
+                searchTextField.text = ""
+            }
+        }
+    }
+    
+    func saveSearchHistory() {
+        let defaults = UserDefaults.standard
+        defaults.set(searchHistory, forKey: "SearchHistory")
+    }
 
-    init() {
-        webViewURL = nil
+    func loadSearchHistory() {
+        let defaults = UserDefaults.standard
+        searchHistory = defaults.object(forKey: "SearchHistory") as? [String] ?? [String]()
     }
+
     
-    private func resetViewState() {
-        textFieldText = ""
-        webViewURL = nil
-        isFirstResponder = true
+    func setupUI() {
+        let titleLabel = UILabel()
+        titleLabel.text = "Token Search"
+        titleLabel.font = UIFont.systemFont(ofSize: 30, weight: .semibold)
+        titleLabel.textColor = .gray
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(titleLabel)
+        
+        // Search TextField
+        searchTextField.delegate = self
+        searchTextField.placeholder = "Project Name or Ticker"
+        searchTextField.autocorrectionType = .no
+        searchTextField.returnKeyType = .search
+        searchTextField.backgroundColor = .white
+        searchTextField.layer.cornerRadius = 12
+        searchTextField.layer.borderWidth = 1
+        searchTextField.layer.borderColor = UIColor.lightGray.cgColor
+        searchTextField.layer.shadowColor = UIColor.black.cgColor
+        searchTextField.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+        searchTextField.layer.shadowOpacity = 0.1
+        searchTextField.layer.shadowRadius = 4.0
+        searchTextField.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
+        
+        let searchIcon = UIImage(systemName: "magnifyingglass")
+        let searchIconView = UIImageView(image: searchIcon)
+        searchIconView.tintColor = .gray
+        searchIconView.frame = CGRect(x: 15, y: 0, width: searchIconView.image!.size.width, height: searchIconView.image!.size.height)
+        searchIconView.contentMode = .center
+
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: searchIconView.frame.width + 30, height: searchIconView.frame.height)) // 15 padding on each side
+        paddingView.addSubview(searchIconView)
+        searchTextField.leftView = paddingView
+        searchTextField.leftViewMode = .always
+
+        let rightPaddingView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: searchTextField.frame.height))
+        searchTextField.rightView = rightPaddingView
+        searchTextField.rightViewMode = .always
+
+        searchTextField.heightAnchor.constraint(equalToConstant: 50).isActive = true
+
+        searchTextField.leftViewMode = .always
+        searchTextField.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(searchTextField)
+        
+        let recentLabel = UILabel()
+        recentLabel.text = "Previous Searches"
+        recentLabel.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
+        recentLabel.textColor = .gray
+        recentLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(recentLabel)
+        
+        // TableView
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(tableView)
+        
+        // Top border
+        let topBorderView = UIView()
+        topBorderView.backgroundColor = UIColor(red: 0.90, green: 0.91, blue: 0.92, alpha: 1.00)
+        topBorderView.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(topBorderView)
+        NSLayoutConstraint.activate([
+            topBorderView.topAnchor.constraint(equalTo: tableView.topAnchor),
+            topBorderView.leadingAnchor.constraint(equalTo: tableView.leadingAnchor),
+            topBorderView.trailingAnchor.constraint(equalTo: tableView.trailingAnchor),
+            topBorderView.heightAnchor.constraint(equalToConstant: 1)
+        ])
+        
+        // Bottom border
+        let bottomBorderView = UIView()
+        bottomBorderView.backgroundColor = UIColor(red: 0.90, green: 0.91, blue: 0.92, alpha: 1.00)
+        bottomBorderView.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(bottomBorderView)
+        NSLayoutConstraint.activate([
+            bottomBorderView.bottomAnchor.constraint(equalTo: tableView.bottomAnchor),
+            bottomBorderView.leadingAnchor.constraint(equalTo: tableView.leadingAnchor),
+            bottomBorderView.trailingAnchor.constraint(equalTo: tableView.trailingAnchor),
+            bottomBorderView.heightAnchor.constraint(equalToConstant: 1)
+        ])
+        
+        // Constraints
+        NSLayoutConstraint.activate([
+            titleLabel.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 22),
+            titleLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            
+            searchTextField.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 22),
+            searchTextField.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            searchTextField.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+            
+            recentLabel.topAnchor.constraint(equalTo: searchTextField.bottomAnchor, constant: 22),
+            recentLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            
+            tableView.topAnchor.constraint(equalTo: recentLabel.bottomAnchor, constant: 20),
+            tableView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor)
+        ])
     }
+
     
-    private func saveSearchHistory(_ history: [String]) {
-        if let encodedData = try? JSONEncoder().encode(history) {
-            UserDefaults.standard.set(encodedData, forKey: "searchHistory")
+    // MARK: - TextField Delegate Methods
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        guard let text = textField.text, !text.isEmpty else { return true }
+        textField.resignFirstResponder()
+        
+        // Remove text from searchHistory if it exists
+        if let index = searchHistory.firstIndex(of: text) {
+            searchHistory.remove(at: index)
         }
+        
+        // Add new search query to the start of searchHistory array
+        searchHistory.insert(text, at: 0)
+        
+        saveSearchHistory() // Save search history after each search
+        searchTextField.resignFirstResponder()
+        
+        // Post notification with search query
+        NotificationCenter.default.post(name: NSNotification.Name("SearchQueryChange"), object: nil, userInfo: ["query": text])
+
+        // Load the search result in webView
+        let searchURL = URL(string: makeSearchUrl(query: text))
+        let request = URLRequest(url: searchURL!)
+        webView.webView!.load(request)
+        webView.isHidden = false // Show the webView
+        tableView.isHidden = true // Hide the tableView
+        
+        // Handle search action here
+        return true
     }
     
-    private func loadSearchHistory() -> [String] {
-        if let data = UserDefaults.standard.data(forKey: "searchHistory"),
-           let decodedData = try? JSONDecoder().decode([String].self, from: data) {
-            return decodedData
+    // MARK: - TableView DataSource Methods
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if (searchHistory.count == 0) {
+            return 1
         }
-        return []
+        return searchHistory.count
     }
     
-    private func updateSearchHistory(with text: String) {
-        if text.trimmingCharacters(in: .whitespaces).isEmpty {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if (searchHistory.count == 0) {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+            cell.textLabel?.text = "No Search History"
+            cell.textLabel?.textColor = .lightGray
+            return cell
+        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        cell.textLabel?.text = searchHistory[indexPath.row]
+        cell.textLabel?.textColor = .lightGray
+        return cell
+    }
+
+    // MARK: - TableView Delegate Methods
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if (searchHistory.count == 0) {
             return
         }
         
-        var updatedHistory = searchHistory
+        tableView.deselectRow(at: indexPath, animated: true)
         
-        // Check if history already contains this text
-        if let index = updatedHistory.firstIndex(of: text) {
-            // If you want to move the existing entry to the end:
-            updatedHistory.remove(at: index)
-        }
-
-        updatedHistory.insert(text, at: 0)
-        searchHistory = updatedHistory
-        saveSearchHistory(updatedHistory)
-    }
-    
-    var body: some View {
-        ZStack {
-            if let url = webViewURL {
-                WebViewWrapper(url: url, tag: 2, reload: $reloadWebView)
-                    .edgesIgnoringSafeArea(.horizontal)
-            }
-            
-            if webViewURL == nil {
-                VStack(spacing: 0) {
-                    Text("Token Search")
-                        .font(.custom("String", size: 25))
-                        .fontWeight(.heavy)
-                        .padding(.top, 22)
-                        .foregroundColor(.black) // Change the text color to red
-                    FirstResponderTextField(text: $textFieldText, isFirstResponder: $isFirstResponder, onCommit: { submittedText in
-                        let urlString = makeSearchUrl(query: submittedText)
-
-                        if let url = URL(string: urlString) {
-                            webViewURL = url
-                            isFirstResponder = false
-                            updateSearchHistory(with: submittedText)
-                            
-                        }
-                    })
-                    .padding()
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .frame(height: 100)
-                    
-                    List {
-                        Section(header: Text("Previous Searches")
-                            .font(.body)
-                            .textCase(nil)) {
-                                ForEach(searchHistory, id: \.self) { searchText in
-                                    Button(action: {
-                                        let urlString = makeSearchUrl(query: searchText)
-                                        if let url = URL(string: urlString) {
-                                            webViewURL = url
-                                            isFirstResponder = false
-                                        }
-                                    }) {
-                                        Text(searchText)
-                                            .foregroundColor(.black)
-                                    }
-                                }
-                            }
-                    }
-                    .listStyle(.insetGrouped) // Apply InsetGroupedListStyle to the list
-                }
-                .background(Color(UIColor(red: 242/255, green: 242/255, blue: 246/255, alpha: 1.0)))
-            }
-        }
-        .transition(.opacity)
-        .animation(.default, value: webViewURL)
-        .onAppear {
-            searchHistory = loadSearchHistory()
-        }
+        let searchText = searchHistory[indexPath.row]
+        searchTextField.text = searchText
+        searchTextField.resignFirstResponder()
+        
+        // Load the search result in webView
+        let searchURL = URL(string: makeSearchUrl(query: searchText))
+        let request = URLRequest(url: searchURL!)
+        webView.webView!.load(request)
+        webView.isHidden = false // Show the webView
+        tableView.isHidden = true // Hide the tableView
     }
 }
 
-struct WebViewWrapper: UIViewRepresentable {
-    typealias UIViewType = WKWebView
 
-    var url: URL
-    var tag: Int
-    @Binding var reload: Bool
-
-    func makeUIView(context: Context) -> WKWebView {
-        let webView = WKWebView()
-        webView.tag = tag
-        webView.load(URLRequest(url: url))
-
-        NotificationCenter.default.addObserver(context.coordinator, selector: #selector(context.coordinator.handleWebViewReload(notification:)), name: NSNotification.Name("com.user.webView.reload"), object: nil)
-
-        return webView
-    }
-
-    func updateUIView(_ uiView: WKWebView, context: Context) {
-        if reload {
-            uiView.reload()
-            reload = false
-        }
-    }
-
-    func makeCoordinator() -> Coordinator {
-        Coordinator(self)
-    }
-
-    class Coordinator: NSObject {
-        var parent: WebViewWrapper
-
-        init(_ parent: WebViewWrapper) {
-            self.parent = parent
-        }
-
-        @objc func handleWebViewReload(notification: Notification) {
-            parent.reload = true
-        }
-        
-        deinit {
-            print("Coordinator is being deallocated")
-        }
-    }
-}
-
-struct MyView_Previews: PreviewProvider {
-    static var previews: some View {
-        SearchView()
-    }
-}
-
-struct SearchWebView: UIViewRepresentable {
-    let url: URL
-    
-    func makeUIView(context: Context) -> WKWebView {
-        let webView = WKWebView()
-        return webView
-    }
-    
-    func updateUIView(_ uiView: WKWebView, context: Context) {
-        let request = URLRequest(url: url)
-        uiView.load(request)
-    }
-}
-
-struct FirstResponderTextField: UIViewRepresentable {
-    @Binding var text: String
-    @Binding var isFirstResponder: Bool
-    var onCommit: ((String) -> Void)?
-    
-    func makeUIView(context: Context) -> UITextField {
-        let textField = UITextField()
-        textField.delegate = context.coordinator
-        textField.returnKeyType = .search
-        textField.autocorrectionType = .no // Disable autocorrect
-        textField.placeholder = "Search Project Name or Ticker"
-        textField.autocapitalizationType = .none
-        textField.backgroundColor = UIColor.white
-        
-        // Custom corner radius and border
-        textField.layer.cornerRadius = 10 // Adjust the corner radius as needed
-        textField.layer.borderWidth = 0
-        textField.layer.borderColor = UIColor.systemGray4.cgColor
-        textField.clipsToBounds = true
-        
-        // Create a magnifying glass icon
-        let magnifyingGlassIcon = UIImageView(image: UIImage(systemName: "magnifyingglass"))
-        magnifyingGlassIcon.contentMode = .scaleAspectFit
-        magnifyingGlassIcon.tintColor = .gray
-        magnifyingGlassIcon.frame = CGRect(x: 14, y: 0, width: 20, height: 20)
-        
-        // Create a container view for the icon and padding
-        let containerView = UIView(frame: CGRect(x: 0, y: 0, width: 36, height: 20))
-        containerView.addSubview(magnifyingGlassIcon)
-        
-        textField.leftView = containerView
-        textField.leftViewMode = .always // Always show the icon
-        
-        return textField
-    }
-    
-    
-    func updateUIView(_ uiView: UITextField, context: Context) {
-        uiView.text = text
-        if isFirstResponder {
-            uiView.becomeFirstResponder()
-        } else {
-            uiView.resignFirstResponder()
-        }
-    }
-    
-    func makeCoordinator() -> Coordinator {
-        Coordinator(self)
-    }
-    
-    class Coordinator: NSObject, UITextFieldDelegate {
-        var parent: FirstResponderTextField
-        
-        init(_ parent: FirstResponderTextField) {
-            self.parent = parent
-        }
-        
-        func textFieldDidChangeSelection(_ textField: UITextField) {
-            parent.text = textField.text ?? ""
-        }
-        
-        func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-            textField.resignFirstResponder()
-            parent.onCommit?(parent.text)
-            return true
-        }
-    }
-}

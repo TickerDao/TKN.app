@@ -15,8 +15,9 @@
 		2605445B29DF3FB000AE2662 /* TKNUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2605445A29DF3FB000AE2662 /* TKNUITests.swift */; };
 		2605445D29DF3FB000AE2662 /* TKNUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2605445C29DF3FB000AE2662 /* TKNUITestsLaunchTests.swift */; };
 		2605446A29DF40D400AE2662 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2605446929DF40D400AE2662 /* WebView.swift */; };
+		260B51EB2A0BE299000AC7A7 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260B51EA2A0BE299000AC7A7 /* SearchView.swift */; };
+		260B51EF2A0BEC4A000AC7A7 /* UIWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260B51EE2A0BEC4A000AC7A7 /* UIWebView.swift */; };
 		268EE57629E7DEEF00081807 /* edit.svg in Resources */ = {isa = PBXBuildFile; fileRef = 268EE57529E7DEEF00081807 /* edit.svg */; };
-		26A497B229E132A3007BDD66 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A497B129E132A3007BDD66 /* SearchView.swift */; };
 		26D64C6D29F330AB00526CDE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D64C6C29F330AB00526CDE /* Constants.swift */; };
 		26EF69B129DF6D23006848B2 /* search.svg in Resources */ = {isa = PBXBuildFile; fileRef = 26EF69B029DF6D23006848B2 /* search.svg */; };
 		26EF69B329DF6D2E006848B2 /* star.svg in Resources */ = {isa = PBXBuildFile; fileRef = 26EF69B229DF6D2E006848B2 /* star.svg */; };
@@ -54,8 +55,9 @@
 		2605445A29DF3FB000AE2662 /* TKNUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TKNUITests.swift; sourceTree = "<group>"; };
 		2605445C29DF3FB000AE2662 /* TKNUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TKNUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		2605446929DF40D400AE2662 /* WebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		260B51EA2A0BE299000AC7A7 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		260B51EE2A0BEC4A000AC7A7 /* UIWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIWebView.swift; sourceTree = "<group>"; };
 		268EE57529E7DEEF00081807 /* edit.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = edit.svg; sourceTree = "<group>"; };
-		26A497B129E132A3007BDD66 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		26D64C6C29F330AB00526CDE /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		26EF69AE29DF6361006848B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		26EF69B029DF6D23006848B2 /* search.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = search.svg; sourceTree = "<group>"; };
@@ -118,7 +120,8 @@
 				26EF69AE29DF6361006848B2 /* Info.plist */,
 				2605444029DF3FAD00AE2662 /* ContentView.swift */,
 				2605446929DF40D400AE2662 /* WebView.swift */,
-				26A497B129E132A3007BDD66 /* SearchView.swift */,
+				260B51EE2A0BEC4A000AC7A7 /* UIWebView.swift */,
+				260B51EA2A0BE299000AC7A7 /* SearchView.swift */,
 				2605444229DF3FB000AE2662 /* Assets.xcassets */,
 				2605444429DF3FB000AE2662 /* TKN.entitlements */,
 				2605444529DF3FB000AE2662 /* Preview Content */,
@@ -304,9 +307,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				26D64C6D29F330AB00526CDE /* Constants.swift in Sources */,
-				26A497B229E132A3007BDD66 /* SearchView.swift in Sources */,
+				260B51EF2A0BEC4A000AC7A7 /* UIWebView.swift in Sources */,
 				2605446A29DF40D400AE2662 /* WebView.swift in Sources */,
 				2605444129DF3FAD00AE2662 /* ContentView.swift in Sources */,
+				260B51EB2A0BE299000AC7A7 /* SearchView.swift in Sources */,
 				2605443F29DF3FAD00AE2662 /* TKNApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
