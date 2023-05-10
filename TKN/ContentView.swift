@@ -21,7 +21,7 @@ struct ContentView: View {
         TabView(selection: $selectedTab.onUpdate{ model.tabTapped(item: selectedTab) }) {
             WebView(url: URL(string: Constants.tab0)!, tag: 0)
                 .navigationBarHidden(true)
-                .edgesIgnoringSafeArea(.all)
+                .edgesIgnoringSafeArea(.top)
                 .tabItem {
                     TabBarItem(title: "Tokens", image: svgImage(named: "list"))
                 }
@@ -29,22 +29,23 @@ struct ContentView: View {
                 .background(Color(Constants.backgroundColor))
             WebView(url: URL(string: Constants.tab1)!, tag: 1)
                 .navigationBarHidden(true)
-                .edgesIgnoringSafeArea(.all)
+                .edgesIgnoringSafeArea(.top)
                 .tabItem {
                     TabBarItem(title: "Edit", image: svgImage(named: "edit"))
                 }
                 .tag(1)
                 .background(Color(Constants.backgroundColor))
-            SearchView()
+            SearchViewController()
                 .navigationBarHidden(true)
-                .edgesIgnoringSafeArea(.bottom)
+                .edgesIgnoringSafeArea(.top)
                 .tabItem {
                     TabBarItem(title: "Search", image: svgImage(named: "search"))
                 }
                 .tag(2)
+                .background(Color(Constants.backgroundColor))
             WebView(url: URL(string: Constants.tab3)!, tag: 3)
                 .navigationBarHidden(true)
-                .edgesIgnoringSafeArea(.all)
+                .edgesIgnoringSafeArea(.top)
                 .tabItem {
                     TabBarItem(title: "Portfolio", image: svgImage(named: "star"))
                 }
@@ -110,5 +111,15 @@ struct TabBarItem: View {
             image
             Text(title)
         }
+    }
+}
+
+struct SearchViewController: UIViewControllerRepresentable {
+    func makeUIViewController(context: Context) -> SearchView {
+        return SearchView()
+    }
+    
+    func updateUIViewController(_ uiViewController: SearchView, context: Context) {
+        
     }
 }

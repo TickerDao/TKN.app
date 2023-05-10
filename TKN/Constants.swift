@@ -19,6 +19,9 @@ struct Constants {
     static let backgroundColor: UIColor = UIColor(red: 0.95, green: 0.96, blue: 0.96, alpha: 1.00)
  }
 
+// MARK: - Helpers
+
 func makeSearchUrl(query: String) -> String {
-    return "\(Constants.hostUrl)/search/\(query)?ios=true"
+    let encodedQuery = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+    return "\(Constants.hostUrl)/search/\(encodedQuery)?ios=true"
 }
