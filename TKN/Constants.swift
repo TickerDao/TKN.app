@@ -23,5 +23,5 @@ struct Constants {
 
 func makeSearchUrl(query: String) -> String {
     let encodedQuery = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
-    return "\(Constants.hostUrl)/search/\(encodedQuery)?ios=true"
+    return "\(Constants.hostUrl)/search/\(encodedQuery)?frame=ios"
 }
